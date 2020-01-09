@@ -13,10 +13,9 @@ import scala.concurrent.ExecutionContext.global
 
 object Main extends App {
 
+  val kanelaAgentJarName = "/home/charles/Downloads/kanela-agent-1.0.4.jar"
+
   // attach Kanela java agent to JVM
-//  Kamon2.init()
-  private val kanelaAgentJarName =
-    "/home/charles/Downloads/kanela-agent-1.0.4.jar"
   ByteBuddyAgent.attach(new File(kanelaAgentJarName), Utils.pid())
 
   implicit val ctxShift: ContextShift[IO] = IO.contextShift(global)
